@@ -14,6 +14,7 @@ const CATEGORIES = ["All", "Lake View", "Heritage", "Luxury"];
 
 export default function Properties({ onSelectProperty }: PropertiesProps) {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   const filteredProperties = activeCategory === "All" 
     ? properties 
@@ -75,17 +76,32 @@ export default function Properties({ onSelectProperty }: PropertiesProps) {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group cursor-pointer"
+                onMouseEnter={() => setHoveredId(property.id)}
+                onMouseLeave={() => setHoveredId(null)}
                 onClick={() => onSelectProperty(property.id)}
               >
-                {/* Image Container - Aspect 4:3 for better density */}
-                <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-6 shadow-xl group-hover:shadow-2xl transition-all duration-500">
+                {/* Image/Video Container */}
+                <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-6 shadow-xl group-hover:shadow-2xl transition-all duration-500 bg-black">
                   <Image
                     src={property.thumbnail}
                     alt={property.name}
                     fill
                     unoptimized
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    className={`object-cover transition-all duration-700 ${hoveredId === property.id ? 'opacity-0 scale-110' : 'opacity-100 scale-100'}`}
                   />
+                  
+                  {/* Hover Video Preview */}
+                  {hoveredId === property.id && (
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover animate-in fade-in zoom-in-105 duration-500"
+                    >
+                      <source src={property.mainVideo} type="video/mp4" />
+                    </video>
+                  )}
                   
                   {/* Glass Badges */}
                   <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
@@ -101,6 +117,13 @@ export default function Properties({ onSelectProperty }: PropertiesProps) {
                       <span className="text-lg font-bold text-primary">₹{property.id === 'hotel-shivraj' ? '3,500' : '4,200'}</span>
                       <span className="text-[8px] uppercase tracking-tighter opacity-60">/ night</span>
                     </div>
+                  </div>
+
+                  {/* Video Play Icon Overlay (always visible to indicate video content) */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                     <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white">
+                        <Play size={20} fill="currentColor" />
+                     </div>
                   </div>
                 </div>
 
@@ -124,7 +147,7 @@ export default function Properties({ onSelectProperty }: PropertiesProps) {
           </AnimatePresence>
         </div>
 
-        {/* Support Section - More Compact */}
+        {/* Support Section */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

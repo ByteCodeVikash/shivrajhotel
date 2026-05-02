@@ -62,7 +62,7 @@ export default function About() {
               </span>
             </div>
             
-            <h2 className="text-4xl md:text-6xl font-serif font-black mb-10 leading-[1.1] text-accent text-editorial">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif font-black mb-6 md:mb-10 leading-[1.1] text-accent text-editorial">
               Where Elegance <br />
               <span className="text-primary italic font-serif">Meets the Horizon.</span>
             </h2>

@@ -71,27 +71,27 @@ export default function Hero() {
 
             <div className="relative z-10 h-full flex flex-col items-center justify-center container mx-auto px-6 md:px-12 text-center text-white">
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               >
                 <span className="inline-block px-6 py-2 mb-8 border border-white/30 rounded-full text-[10px] uppercase font-bold tracking-[0.4em] backdrop-blur-md">
                   Uttarakhand&apos;s Premier Stay
                 </span>
-                <h1 className="text-4xl md:text-6xl font-serif font-black mb-6 leading-tight tracking-tight text-editorial">
+                <h1 className="text-3xl sm:text-5xl md:text-7xl font-serif font-black mb-6 leading-tight tracking-tight text-editorial">
                   {slide.title} <br />
                   <span className="text-primary italic font-serif">{slide.subtitle}</span>
                 </h1>
-                <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/80 font-light mb-12 leading-relaxed">
+                <p className="max-w-2xl mx-auto text-sm md:text-xl text-white/80 font-light mb-8 md:mb-12 leading-relaxed">
                   Discover a world where luxury meets nature. From boutique hotels to panoramic resorts, we offer meticulously crafted stays for business and family.
                 </p>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
-                  <button className="luxury-button min-w-[240px] text-lg py-3 shadow-2xl shadow-primary/20">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8">
+                  <button className="luxury-button w-full sm:min-w-[200px] md:min-w-[240px] text-sm md:text-lg py-3 shadow-2xl shadow-primary/20">
                     Explore Our Collection
                   </button>
-                  <button className="luxury-button-outline !border-white !text-white hover:!bg-white hover:!text-accent min-w-[240px] text-lg py-3 flex items-center justify-center gap-3 backdrop-blur-sm">
-                    <Play size={20} fill="currentColor" />
+                  <button className="luxury-button-outline w-full sm:min-w-[200px] md:min-w-[240px] text-sm md:text-lg py-3 flex items-center justify-center gap-3 backdrop-blur-sm !border-white !text-white hover:!bg-white hover:!text-accent">
+                    <Play size={18} fill="currentColor" />
                     Watch Experience
                   </button>
                 </div>

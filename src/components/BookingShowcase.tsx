@@ -49,7 +49,7 @@ export default function BookingShowcase() {
               <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">
                 The Future of Booking
               </span>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 leading-tight text-white">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-6 leading-tight text-white">
                 Don't Just Look at Photos. <br/>
                 <span className="text-white/50">Experience the Video Tour.</span>
               </h2>
