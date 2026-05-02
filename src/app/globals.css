@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #D4AF37;
+  --color-primary-dark: #B8860B;
+  --color-secondary: #FDFBF7;
+  --color-accent: #1A1A1A;
+  --color-cream: #F5F1E9;
+  
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+:root {
+  --background: #FDFBF7;
+  --foreground: #1A1A1A;
+  --primary: #D4AF37;
+  --primary-foreground: #FDFBF7;
+}
+
+@layer base {
+  * {
+    @apply border-black/5;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-secondary text-accent font-sans selection:bg-primary/30;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+  
+  .luxury-button {
+    @apply px-8 py-3 bg-primary text-secondary font-bold tracking-widest uppercase text-[10px] transition-all duration-300 hover:bg-primary-dark hover:shadow-lg active:scale-95 disabled:opacity-50 whitespace-nowrap leading-none;
+  }
+  
+  .luxury-button-outline {
+    @apply px-8 py-3 border border-primary text-primary font-bold tracking-widest uppercase text-[10px] transition-all duration-300 hover:bg-primary hover:text-secondary hover:shadow-lg active:scale-95 disabled:opacity-50 whitespace-nowrap leading-none;
+  }
+}
+
+.text-editorial {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-secondary;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/30 rounded-full hover:bg-primary/50;
+}
+
+/* Swiper Customization */
+.swiper-pagination-bullet-active {
+  @apply !bg-primary;
+}
+
+.swiper-button-next, .swiper-button-prev {
+  @apply !text-primary after:!text-2xl;
+}
